@@ -7,6 +7,8 @@ require (
 	github.com/CatchZeng/gutils v0.1.5
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.6.3
+	github.com/gogf/gf v1.13.4
+	github.com/jinzhu/gorm v1.9.16
 	github.com/manifoldco/promptui v0.7.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/spf13/cobra v1.0.0
