@@ -38,7 +38,8 @@ func LogV(v ...interface{}) {
 
 // LogWrap log with color and wrap
 func LogWrap(color uint8, v ...interface{}) {
-	Log(color, v, "\n")
+	//Log(color, v, "\n")
+	Log(color, v)
 }
 
 // Log log with color

@@ -35,3 +35,15 @@ func FindDbTables() ([]*TableNameAndComment, error) {
 	})
 	return nameAndComments, nil
 }
+
+// ListTableNameAndComment 返回表名和评论列表
+func ListTableNameAndComment() (result []string, err error){
+	nameAndComments, err := FindDbTables()
+	if err != nil {
+		return  nil, err
+	}
+	for _, v := range nameAndComments {
+		result = append(result, v.TableName)
+	}
+	return result, nil
+}

@@ -1,7 +1,5 @@
 package generator
 
-import "github.com/appboot/appboot/internal/pkg/database"
-
 // Generator data struct
 type Generator struct {
 	User          string
@@ -11,11 +9,9 @@ type Generator struct {
 	DB            string
 	Path          string
 	TemplatePath string
+	SelectedTable  string
 }
 
 func Run(app Generator) error {
-	database.SetDbName(app.DB)
-	database.SetUp(app.User, app.Pwd, app.Host, app.Port)
-	defer database.Close()
-	return CreateDBEntity(app.Path, app.TemplatePath)
+	return CreateDBEntity(app.Path, app.SelectedTable, app.TemplatePath)
 }

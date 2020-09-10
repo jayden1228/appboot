@@ -87,7 +87,7 @@ func BuildReq(formatList []string, dir string, templatePath string) ([]*EntityRe
 	return reqs, nil
 }
 
-func CreateDBEntity(dir string, templatePath string) error {
+func CreateDBEntity(dir, selectTable, templatePath string) error {
 	formatList := GetDefaultFormatList()
 
 	// 检测目录是否包含model，无则添加model目录
@@ -105,10 +105,13 @@ func CreateDBEntity(dir string, templatePath string) error {
 	}
 
 	for _, req := range reqs {
-		err = GenerateDBEntity(req)
-		if err != nil {
-			log.Fatal("CreateEntityErr>>", err)
-			return err
+		// 指定表或全部
+		if selectTable == "All" || selectTable == req.TableName {
+			err = GenerateDBEntity(req)
+			if err != nil {
+				log.Fatal("CreateEntityErr>>", err)
+				return err
+			}
 		}
 	}
 	return nil

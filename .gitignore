@@ -13,3 +13,6 @@
 .vscode
 .idea
 coverage.data
+
+# OS temp file
+.DS_Store
