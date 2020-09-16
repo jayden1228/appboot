@@ -100,10 +100,6 @@ func CreateDBEntity(dir, selectTable, templatePath string) error {
 		return err
 	}
 
-	if err := GenerateDbErr(dir,templatePath); err != nil {
-		return err
-	}
-
 	for _, req := range reqs {
 		// 指定表或全部
 		if selectTable == "All" || selectTable == req.TableName {
@@ -159,36 +155,6 @@ func GenerateDBEntity(req *EntityReq) error {
 	}
 
 	tool.Gofmt(req.EntityPath)
-	return nil
-}
-
-func GenerateDbErr(dir string, templatePath string) error {
-	type tableInfo struct {
-		PackageName string
-	}
-
-	errPath := gfile.Join(dir, DbErrFileName)
-	if gfile.Exists(errPath) {
-		return nil
-	}
-
-	tpl, err :=  template.ParseFiles(path.HandlerHomeDirAndWorkDir(gfile.Join(templatePath, errorsTemplate)))
-	if err != nil {
-		return err
-	}
-
-	content := bytes.NewBuffer([]byte{})
-
-	if err := tpl.Execute(content, tableInfo{PackageName: EntityPackageName}); err != nil {
-		return err
-	}
-
-	err = gfile.PutContents(errPath, content.String())
-	if err != nil {
-		return err
-	}
-
-	tool.Gofmt(errPath)
 	return nil
 }
 

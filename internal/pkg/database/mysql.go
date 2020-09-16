@@ -56,7 +56,7 @@ func SetUp(user, pwd, host, port string) {
 		log.Println("connect to mysql fail, ", dsn, err)
 		panic(err)
 	}
-	engine.LogMode(false)
+	engine.LogMode(true)
 
 	engine.DB().SetConnMaxLifetime(connMaxLifetime * time.Second)
 	engine.DB().SetMaxOpenConns(maxOpenConns)

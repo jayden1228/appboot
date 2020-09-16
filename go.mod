@@ -14,5 +14,6 @@ require (
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.7.0
 	github.com/timest/env v0.0.0-20180717050204-5fce78d35255
+	gitlab.com/makeblock-go/mysql v0.2.2 // indirect
 	gopkg.in/yaml.v2 v2.2.8
 )
